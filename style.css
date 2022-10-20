@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap');
 
 * {
     box-sizing:border-box;
 }
 
-:root {
-   --primary-color:hsl(25, 97%, 53%);
-}
 body {
     font-family:'Overpass';
     display:flex;
@@ -16,131 +13,156 @@ body {
     overflow:hidden;
     flex-direction: column;
     position:relative;
-    background:hsl(216, 12%, 8%)
+    background:hsl(216, 12%, 8%);
+    font-size:14px;
+
 }
-.card1.finished {
- transform:translateY(-100rem);
-} 
-.card1 {
-position:absolute;
-transition: 3s ease-out
-}
-.card2 {
-    transform:translateY(100rem);
-    transition: 3s ease-in;
-}
-.card {
-    max-width:410px;
-    height:auto;
-    background-color:hsl(213, 19%, 18%);
-    border-radius:18px;
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-    padding:35px 30px;
-    transition: 0.5s ease;
-}
-img {
-    width:100%;
-}
+
 h2 {
-    color: hsl(0, 0%, 100%);
-    font-size:25px;
+    color:white;
+    margin-top:1em;
+    margin-bottom:0;
 }
 
-small {
-    color:hsl(217, 12%, 63%);
-    font-size:15px;
+p {
+    color:hsl(216, 12%, 54%);
+    line-height:1.6em;
 }
 
-.star-img {
-    background-color:hsla(217, 9%, 45%, 0.397);
-    padding:10px 13px;
-    border-radius:50%;
-    float:left;
-    position:relative;
-    left:-45%;
-    align-items:center;
-    justify-content: center;
-
-}
-.star {
-    position:relative;
-    bottom:-2.5px;
-}
 button {
-    border:none;
-    outline:none;
+    cursor:pointer;
 }
 
-button:focus {
-    outline:none;
-}
 
-.rating-area {
+.card {
+    background-color:hsl(213, 19%, 18%);
+    width:350px;
+    height:auto;
     display:flex;
     justify-content: center;
-    align-items: center;
-    padding-top:1.8rem;
-    margin-bottom:1.5rem;
+    flex-direction:column;
+    padding:1.5em;
+    border-radius:20px;
+    box-shadow: 0px 0px 10px 3px rgba(247, 247, 247, 0.055)
+}
+
+/* Rating Card Section */
+
+.star {
+    background-color:hsla(216, 12%, 54%, 0.212);
+    background-image:url(./images/icon-star.svg);
+    background-repeat:no-repeat;
+    background-position:52.2% 53%;
+    padding:1em;
+    text-align: center;
+    width:40px;
+    height:40px;
+    border-radius:30px;
+}
+
+.rating_buttons {
+    display:flex;
+    justify-content:space-around;
 }
 
 .rating {
-    margin:0px 15px 0px 15px;
-    font-size:17px;
-    padding:12px 18px;
+    background-color:hsla(216, 12%, 54%, 0.212);
+    color:hsl(216, 12%, 54%);
+    padding:1em 1.3em;
     border-radius:50%;
-    color:grey;
-    background-color:hsla(217, 9%, 45%, 0.397);
-    cursor:pointer;
-    transition: 0.3s ease-in-out all;
+    border:none;
+    margin-bottom:2em;
+    transition: background-color  0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.rating.active {
+    color:hsl(215, 18%, 61%);
+    background:hsl(217, 10%, 43%);
 }
 
 .rating:hover {
-  background-color:hsl(218, 7%, 71%);
-  color:white;
-}
-
-.rating.selected {
     color:white;
-    background-color:var(--primary-color);
+    background-color:hsl(25, 97%, 53%);
 }
 
-.rating-submit {
-    width:340px;
-    padding:15px;
+.submit {
+    background-color:hsl(25, 97%, 53%);
+    color:white;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform: uppercase;
+    padding:0.8em;
     border-radius:30px;
-    letter-spacing:5px;
-    background-color:var(--primary-color);
-    font-weight:700;
-    color:white;
-    transition: 0.3s ease-in-out all;
-    cursor:pointer;
+    border:0px;
+    transition: background-color  0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.rating-submit:hover {
-   background-color: white;
-   color:var(--primary-color);
+.submit:hover {
+    color:hsl(25, 97%, 53%);
+    background-color:white;
 }
 
+/* Thank You Card Section */
 
-.result-text p {
-    color:var(--primary-color);
-    padding:8px 13px;
-    border-radius:15px;
-    font-size:12px;
-    background-color:hsla(217, 9%, 45%, 0.397);
-    margin-top:2em;
-}
-.text2 {
+.thank-you-card {
+    align-items: center;
     text-align: center;
+    display:none;
+    transform:translateY(500em);
 }
 
-.card2.thankyou {
-    transform:translateY(0%);
+.thank-you-card img {
+    margin-bottom:1em;
 }
 
-.attribution {
+.thank-you-card small {
+    background-color:hsla(216, 12%, 54%, 0.212);
+    color:hsl(25, 97%, 53%);
+    padding:9px 18px;
+    border-radius:30px;
+    margin-top: 10px;
+}
+
+footer {
+    position:absolute;
     color:white;
-    padding:30px;
+    bottom:10px;
+}
+
+
+
+
+
+/* animations */
+
+.rating_card.submitted {
+   animation: submitted 1s ease-out;
+   transform:translateY(-500em);
+}
+
+.thank-you-card.thanks {
+    animation: thankYou 1.5s ease-in;
+    display:block;
+    transform:translateY(-15em);
+    opacity:1;
+}
+
+
+
+@keyframes submitted {
+    0% {transform:translateY(50px)}
+
+    20% {transform:translateY(100px)}
+
+    100% {transform:translateY(-500em); opacity: 0;}
+}
+
+@keyframes thankYou {
+    0% {transform:translateY(300em); opacity:0}
+
+    40% {transform:translateY(180em)}
+
+    88% {transform:translateY(-18em); opacity:1}
+
+    100% {transform:translateY(-15em); opacity:1}
 }
